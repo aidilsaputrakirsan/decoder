@@ -511,9 +511,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="input-encode">Konten .env Anda:</label>
+                        <label for="input-encode">Konten Anda:</label>
                         <textarea id="input-encode" class="textarea" placeholder="Tempel konten file .env Anda di sini..."></textarea>
-                        <span class="sample-link" onclick="loadSample()">Muat contoh</span>
                     </div>
                     
                     <div class="btn-group">
@@ -705,26 +704,6 @@
             decodeMethod = method;
         }
         
-        // Load a sample .env file
-        function loadSample() {
-            const sampleEnv = `# MongoDB
-MONGODB_URI=mongodb+srv://username:password@cluster.example.mongodb.net/database
-# NextAuth
-NEXTAUTH_URL=https://example.vercel.app
-NEXTAUTH_SECRET=your-secret-key-123
-# Pusher 
-PUSHER_APP_ID=123456
-PUSHER_KEY=abcdef1234567890
-PUSHER_SECRET=abcdef1234567890
-PUSHER_CLUSTER=ap1
-# Public variables
-NEXT_PUBLIC_PUSHER_KEY=abcdef1234567890
-NEXT_PUBLIC_PUSHER_CLUSTER=ap1
-# Optional: Node environment
-NODE_ENV=production`;
-            
-            document.getElementById('input-encode').value = sampleEnv;
-        }
         
         // Encode function
         function encode() {
