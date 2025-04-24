@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dekoder File</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        textarea { width: 100%; height: 200px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        #output { white-space: pre-wrap; background: #f5f5f5; padding: 15px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h2>Dekoder File Backup</h2>
+    <p>Tempel konten terenkripsi dari temp_backup_23.txt di bawah ini:</p>
+    <textarea id="input" placeholder="Tempel konten terenkripsi di sini..."></textarea>
+    <button onclick="decode()">Dekode</button>
+    <h3>Hasil Dekode:</h3>
+    <div id="output"></div>
+
+    <script>
+        function decode() {
+            const obfuscated = document.getElementById('input').value;
+            const decoded = deobfuscateText(obfuscated);
+            document.getElementById('output').textContent = decoded;
+        }
+
+        function deobfuscateText(obfuscated) {
+            // Hapus prefix dan suffix
+            const prefix = "CK_BACKUP_DATA_SYSTEM_X92_";
+            const suffix = "_END_BACKUP_REFERENCE_DOC";
+            
+            // Ekstrak bagian tengah
+            let encoded = obfuscated.substring(prefix.length, obfuscated.length - suffix.length);
+            
+            // Balikkan kembali
+            encoded = encoded.split('').reverse().join('');
+            
+            // Decode Base64
+            return atob(encoded);
+        }
+    </script>
+</body>
+</html>
